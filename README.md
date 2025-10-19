@@ -107,3 +107,7 @@ Database Schema for Inventory Service
 
 ![alt text](markdown-images/image-3.png)
 
+now, as we have created the initial database using docker, now let's create database-tables, using `flyway` it's used in industry. This tool helps to migrate database without using DDL.
+
+[Flyway Official Site](https://www.red-gate.com/products/flyway/community/#maven)
+
