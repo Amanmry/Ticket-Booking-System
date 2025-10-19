@@ -28,15 +28,28 @@ public class InventoryService {
                 .event(event.getName())
                 .capacity(event.getLeftCapacity())
                 .venue(event.getVenue())
+                .ticketPrice(event.getTicketPrice())
+                .eventId(event.getId())
                 .build()).collect(Collectors.toList());
     }
 
     public VenueInventoryResponse getVenueInformation(Long venueId) {
-        final Venue venue = venueRepository.findById(venueId).orElse(null);
+        final Venue venue = venueRepository.findById(venueId).orElseThrow(() -> new RuntimeException("no venue found by id : " + venueId));
         return VenueInventoryResponse.builder()
                 .venueId(venue.getId())
                 .venueName(venue.getName())
                 .totalCapacity(venue.getTotalCapacity())
+                .build();
+    }
+
+    public EventInventoryResponse getEventInventory(Long eventId) {
+        final Event event = eventRepository.findById(eventId).orElseThrow(() -> new RuntimeException("no event found by id : " + eventId));
+        return EventInventoryResponse.builder()
+                .event(event.getName())
+                .capacity(event.getLeftCapacity())
+                .venue(event.getVenue())
+                .ticketPrice(event.getTicketPrice())
+                .eventId(event.getId())
                 .build();
     }
 }

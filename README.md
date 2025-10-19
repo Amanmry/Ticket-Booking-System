@@ -99,7 +99,7 @@ Let's head to spring initializer and start creating our microservices : [Spring 
 
 ### 1. Inventory Microservices
 
-Let's generate a project and open in IntelliJ
+Let's generate a project and open in IntelliJ for `Inventory Microservice`
 
 ![alt text](markdown-images/image-2.png)
 
@@ -110,4 +110,14 @@ Database Schema for Inventory Service
 now, as we have created the initial database using docker, now let's create database-tables, using `flyway` it's used in industry. This tool helps to migrate database without using DDL.
 
 [Flyway Official Site](https://www.red-gate.com/products/flyway/community/#maven)
+
+### 2. Booking Microservices
+
+New extended Database Schema
+
+![alt text](markdown-images/image-4.png)
+
+Let's generate a project and open in IntelliJ for `Booking Microservice`
+
+![alt text](markdown-images/image-5.png)
 
