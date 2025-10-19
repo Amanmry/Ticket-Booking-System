@@ -176,3 +176,12 @@ Let's generate a project and open in IntelliJ for `Booking Microservice`
       SCHEMA_REGISTRY_LISTENERS: http://kafka-schema-registry:8081
 
 ```
+
+### 3. Order Microservices
+
+Let's generate a project and open in IntelliJ for `Order Microservice`
+
+![alt text](markdown-images/image-6.png)
+
+Order Service is a consumer service, for booking service and it helps to place order and update inventory.
+
