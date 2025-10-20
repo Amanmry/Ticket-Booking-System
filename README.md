@@ -206,4 +206,54 @@ In this project will use `Spring Cloud Gateway` as an API Gateway.
 
 ![alt text](markdown-images/image-7.png)
 
+---
 
+## Spring Security
+
+We will be using `KEYCLOAK` for securing our API Endpoints.
+
+need to add some more dependencies in Docker for `keycloak`
+
+docker-compose.yml
+```yml
+
+  keycloak-db:
+    container_name: keycloak-mysql
+    image: mysql:9.4.0 
+    volumes:
+      - ./volume-data/mysql_keycloak_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: password
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:24.0.1
+    command: ["start-dev", "--import-realm"]
+    environment:
+      DB_VENDOR: MYSQL
+      DB_ARDR: mysql
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8091:8080"
+    volumes:
+      - ./docker/keycloak/realms/:/opt/keycloak/data/import/ 
+    depends_on:
+      - keycloak-db
+
+```
+
+Need to add this dependency in API Gateway `pom.xml`
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+</dependency>
+```
