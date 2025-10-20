@@ -257,3 +257,29 @@ Need to add this dependency in API Gateway `pom.xml`
     <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 </dependency>
 ```
+
+---
+
+## Let's add some Resilience to our Microservices
+
+### Circuit Breaker Pattern
+
+![alt text](markdown-images/image-8.png)
+
+let's add some dependencies to our API Gateway Microservice
+
+`pom.xml`
+```xml
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+```
+
