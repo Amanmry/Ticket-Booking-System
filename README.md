@@ -283,3 +283,75 @@ let's add some dependencies to our API Gateway Microservice
 
 ```
 
+## API Documentation
+
+OpenAPI is Specification of how API Documentation should look like and it Implementation is `Swagger`.
+
+So, will be creating API Documentation for `Booking Service` and `Inventory Service` using `API Gateway` so that the one who would be looking into the documentation can only access this endpoints through `API Gateway`.
+
+`pom.xml` for inventory and booking service
+```xml
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.8.13</version>
+</dependency>
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+    <version>2.8.13</version>
+</dependency>
+```
+
+then need to create a OpenApiConfig class to customize the HTML page of API Docs
+
+`Booking Service Class for customization of API Docs HTML Page`
+```java
+package com.aman.bookingservice.config;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI inventoryServiceApi() {
+        return new OpenAPI()
+                .info(new io.swagger.v3.oas.models.info.Info()
+                        .title("Booking Service API")
+                        .description("Booking Service API for Ticket Booking System!")
+                        .version("v1.0.0"));
+    }
+}
+```
+
+`Inventory Service Class for customization of API Docs HTML Page`
+```java
+package com.aman.inventoryservice.config;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI inventoryServiceApi() {
+        return new OpenAPI()
+                .info(new io.swagger.v3.oas.models.info.Info()
+                        .title("Inventory Service API")
+                        .description("Inventory Service API for Ticket Booking System!")
+                        .version("v1.0.0"));
+    }
+}
+```
+
+[API Docs for Inventory Service](http://localhost:8080/swagger-ui/index.html#/)
+
+[API Docs for Booking Service](http://localhost:8081/swagger-ui/index.html#/)
+
+Now, we want external People to access these docs from API Gateway, so let's do that in API Gateway Microservice and Allow the HTML Page to be accessed without authentication.
+
