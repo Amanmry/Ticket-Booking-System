@@ -355,3 +355,6 @@ public class OpenApiConfig {
 
 Now, we want external People to access these docs from API Gateway, so let's do that in API Gateway Microservice and Allow the HTML Page to be accessed without authentication.
 
+[API Docs for Inventory Service, Booking Service through API Gateway](http://localhost:8090/swagger-ui/index.html)
+
+---
