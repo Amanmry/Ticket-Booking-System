@@ -185,3 +185,25 @@ Let's generate a project and open in IntelliJ for `Order Microservice`
 
 Order Service is a consumer service, for booking service and it helps to place order and update inventory.
 
+---
+
+## API Gateway
+
+An API Gateway is a server that acts as an entry point for client requests and routes them to backend services. It acts as a reverse proxy, handling authentication, request transformation, rate limiting.
+
+### Benefits & Drawbacks
+
+| Benefits                   | Drawbacks               |
+| -------------------------- | ----------------------- |
+| Centralised entry point    | Single point of failure |
+| Load Balancing and Routing | Increased latency       |
+| Security                   | Set up complexity       |
+| Caching and Compression    | Maintenance             |
+| API Versioning             | Potential bottlenecks   |
+| Protocol translation       |                         |
+
+In this project will use `Spring Cloud Gateway` as an API Gateway.
+
+![alt text](markdown-images/image-7.png)
+
+
